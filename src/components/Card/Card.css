@@ -1,0 +1,51 @@
+.card {
+	animation: reveal linear both;
+	animation-timeline: view();
+	animation-range: entry 10% cover 20%;
+	text-align: center;
+	padding: 8px;
+}
+
+.card:hover .card__img {
+	transform: scale(1.15);
+	rotate: -15deg;
+}
+
+.card__img {
+	width: 200px;
+	aspect-ratio: 1/1;
+	transition:
+		transform 0.5s,
+		rotate 0.3s;
+	filter: drop-shadow(0 4px 4px #1b1b1f50);
+}
+
+.card__body {
+	display: flex;
+	flex-direction: column;
+}
+
+.card__title {
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.card__prices {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+
+.card__prices,
+.card__discount {
+	font-weight: 600;
+}
+
+.card__discount {
+	color: #037503;
+}
+
+.price-prev {
+	color: #8d8d8d;
+	text-decoration: line-through;
+}
