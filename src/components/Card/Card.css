@@ -1,14 +1,21 @@
 .card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	animation: reveal linear both;
 	animation-timeline: view();
 	animation-range: entry 10% cover 20%;
 	text-align: center;
 	padding: 8px;
-}
+	border-radius: 12px;
+	box-shadow: 0 10px 20px #00000030;
+	font-size: 16px;
 
-.card:hover .card__img {
-	transform: scale(1.15);
-	rotate: -15deg;
+	&:hover .card__img {
+		transform: scale(1.15);
+		rotate: -15deg;
+	}
 }
 
 .card__img {
@@ -23,11 +30,16 @@
 .card__body {
 	display: flex;
 	flex-direction: column;
+	flex: 1;
 }
 
 .card__title {
-	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
 	font-weight: 400;
+	font-size: inherit;
 }
 
 .card__prices {
@@ -42,10 +54,10 @@
 }
 
 .card__discount {
-	color: #037503;
+	color: #06a306;
 }
 
 .price-prev {
-	color: #8d8d8d;
+	color: #8d8d8d80;
 	text-decoration: line-through;
 }

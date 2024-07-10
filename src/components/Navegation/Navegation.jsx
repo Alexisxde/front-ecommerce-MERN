@@ -1,3 +1,4 @@
+import SideBarCart from '@components/SideBarCart/SideBarCart'
 import Cart from '@icon/Cart'
 import Moon from '@icon/Moon'
 import Sun from '@icon/Sun'
@@ -6,6 +7,7 @@ import './Navegation.css'
 // import logo from '@public/logo.svg'
 
 export default function Navegation() {
+	const [cart, setCart] = useState(false)
 	const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
 
 	useEffect(() => {
@@ -18,6 +20,10 @@ export default function Navegation() {
 		localStorage.setItem('theme', newTheme)
 	}
 
+	const toggleCart = () => {
+		setCart(!cart)
+	}
+
 	return (
 		<header className='header'>
 			<a href='/' className='header__logo'>
@@ -26,16 +32,16 @@ export default function Navegation() {
 			</a>
 			<nav className='header__nav'>
 				<a href=''>Sneakers</a>
-				<a href=''>Messages</a>
 				<div className='header__mode'>
 					<button onClick={toggleTheme}>
 						{theme === 'dark' ? <Sun /> : <Moon />}
 					</button>
 				</div>
 				<section className='header__cart'>
-					<button>
+					<button onClick={toggleCart}>
 						<Cart />
 					</button>
+					{cart && <SideBarCart toggleCart={toggleCart} />}
 				</section>
 			</nav>
 		</header>

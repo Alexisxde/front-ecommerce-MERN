@@ -9,8 +9,7 @@ export default function Hero() {
 			<span className='hero__title'>HASTA 40% OFF</span>
 			<span className='hero__title'>DESCUENTOS SOLO HOY</span>
 			<img className='hero__img' src={sneaker} />
-			{/* <div className='hero__filter hero__filter-1'></div>
-			<div className='hero__filter hero__filter-2'></div> */}
+			<div className='hero__filter'></div>
 		</section>
 	)
 }

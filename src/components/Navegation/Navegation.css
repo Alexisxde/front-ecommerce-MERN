@@ -23,11 +23,6 @@
 	font-weight: 600;
 }
 
-.header__logo img {
-	width: 24px;
-	aspect-ratio: 1/1;
-}
-
 .header__nav {
 	display: flex;
 	align-items: center;
@@ -40,19 +35,17 @@
 	text-decoration: none;
 }
 
-.header__nav div,
+.header__nav .header__mode,
 .header__cart {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
 }
 
-.header__mode button,
-.header__cart button {
+.header__mode > button,
+.header__cart > button {
 	display: flex;
 	align-items: center;
-	background-color: transparent;
-	border: none;
 	cursor: pointer;
 	color: inherit;
 }

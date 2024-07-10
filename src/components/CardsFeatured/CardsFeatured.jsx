@@ -1,7 +1,31 @@
+import { getAllProducts } from '@api/products.api.js'
 import Card from '@components/Card/Card'
+import Notification from '@components/Notification/Notification'
+import { useEffect, useState } from 'react'
 import './CardsFeatured.css'
 
 export default function CardsFeatured() {
+	const [products, setProducts] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState('')
+
+	useEffect(() => {
+		const getProducts = async () => {
+			try {
+				const data = await getAllProducts()
+				setProducts(data)
+			} catch (error) {
+				setError(error.message)
+			} finally {
+				setLoading(false)
+			}
+		}
+		getProducts()
+	}, [])
+
+	if (error) return <Notification type='error' message={error} />
+	if (loading) return
+
 	return (
 		<section className='featured'>
 			<div className='featured__title'>
@@ -9,51 +33,9 @@ export default function CardsFeatured() {
 				<span>featured</span>
 			</div>
 			<div className='featured-card'>
-				<Card
-					card={{
-						img: null,
-						title: 'Nike Air Max 2',
-						stars: 5,
-						price: '100.000,00',
-						discount: 10
-					}}
-				/>
-				<Card
-					card={{
-						img: null,
-						title: 'Nike Air Max 2',
-						stars: 5,
-						price: '100.000,00',
-						discount: 10
-					}}
-				/>
-				<Card
-					card={{
-						img: null,
-						title: 'Nike Air Max 2',
-						stars: 5,
-						price: '100.000,00',
-						discount: 10
-					}}
-				/>
-				<Card
-					card={{
-						img: null,
-						title: 'Nike Air Max 2',
-						stars: 5,
-						price: '100.000,00',
-						discount: 10
-					}}
-				/>
-				<Card
-					card={{
-						img: null,
-						title: 'Nike Air Max 2',
-						stars: 5,
-						price: '100.000,00',
-						discount: 10
-					}}
-				/>
+				{products?.map(product => (
+					<Card key={product.id_product} product={product} />
+				))}
 			</div>
 		</section>
 	)
