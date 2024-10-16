@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import './Navegation.css'
 // import logo from '@public/logo.svg'
 
-export default function Navegation() {
+export default function Navegation({ children }) {
 	const [cart, setCart] = useState(false)
 	const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
 
@@ -25,25 +25,28 @@ export default function Navegation() {
 	}
 
 	return (
-		<header className='header'>
-			<a href='/' className='header__logo'>
-				{/* <img src={logo} alt='Logo CSS' /> */}
-				<span>SNEAKERS</span>
-			</a>
-			<nav className='header__nav'>
-				<a href=''>Sneakers</a>
-				<div className='header__mode'>
-					<button onClick={toggleTheme}>
-						{theme === 'dark' ? <Sun /> : <Moon />}
-					</button>
-				</div>
-				<section className='header__cart'>
-					<button onClick={toggleCart}>
-						<Cart />
-					</button>
-					{cart && <SideBarCart toggleCart={toggleCart} />}
-				</section>
-			</nav>
-		</header>
+		<>
+			<header className='header'>
+				<a href='/' className='header__logo'>
+					{/* <img src={logo} alt='Logo CSS' /> */}
+					<span>SNEAKERS</span>
+				</a>
+				<nav className='header__nav'>
+					<a href=''>Sneakers</a>
+					<div className='header__mode'>
+						<button onClick={toggleTheme}>
+							{theme === 'dark' ? <Sun /> : <Moon />}
+						</button>
+					</div>
+					<section className='header__cart'>
+						<button onClick={toggleCart}>
+							<Cart />
+						</button>
+						{cart && <SideBarCart toggleCart={toggleCart} />}
+					</section>
+				</nav>
+			</header>
+			{children}
+		</>
 	)
 }

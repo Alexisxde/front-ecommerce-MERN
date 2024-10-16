@@ -21,3 +21,12 @@ export async function getAllProducts(page = 1, active = '1') {
 		throw new Error('Error fetching movies: ' + error.message)
 	}
 }
+
+export async function getOneProduct(slug) {
+	try {
+		const response = await axiosInstance.get(`api/products/${slug}`)
+		return response.data
+	} catch (error) {
+		throw new Error('Error fetching movies: ' + error.message)
+	}
+}
